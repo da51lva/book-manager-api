@@ -81,4 +81,14 @@ public class BookManagerServiceTests {
         verify(mockBookManagerRepository, times(1)).save(book);
     }
 
+    @Test
+    public void testDeleteBookById(){
+
+        Book book = new Book(5L, "A Deletable Book", "This book will be deleted", "Deleted Author", Genre.Fantasy);
+
+        bookManagerServiceImpl.deleteBookById(book.getId());
+
+        verify(mockBookManagerRepository, times(1)).deleteById(book.getId());
+    }
+
 }
